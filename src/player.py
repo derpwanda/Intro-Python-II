@@ -9,4 +9,4 @@ class Player:
     def __str__(self):
         return (f"from Player Class: {self.p_name} is in the {self.p_room.r_name}")
 
-print("inside class Player",)
+    
