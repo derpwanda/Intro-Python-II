@@ -19,5 +19,3 @@ class Room:
         self.w_to=None
     
 
-
-print("inside class Room",)
