@@ -59,7 +59,12 @@ player = Player('Wanda', room['outside'])
 # Print an error message if the movement isn't allowed.
 #
 # If the user enters "q", quit the game.
-while True: # will run until it hits the return or break statement
+
+# playermove = input("   [n]orth [s]outh [e]ast [w]est [Q]uit: ")
+playermove=None
+print(f"Welcome to the game!")
+
+while playermove != "Q": # will run until it hits the return or break statement
     print(f"{player.p_name} is in: {player.p_room.r_name}")
     print(f"{player.p_room.r_description}")
 
@@ -82,14 +87,8 @@ while True: # will run until it hits the return or break statement
     elif playermove == 'w' and player.p_room.w_to:
         player.p_room = player.p_room.w_to
     elif playermove == 'Q':
-        print(f"Goodbye {player.p_name}")
+        print(f"\nGoodbye {player.p_name}")
         break
     else:
         print('\n>>> There is no room in that direction. Choose again. <<<\n')
 
-
-
-
-
-print(f"{player.p_room.r_name} holds list:{player.p_room.items}")
-print(player)
