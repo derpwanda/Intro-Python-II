@@ -71,18 +71,18 @@ while True: # will run until it hits the return or break statement
         print("There are no items in this room!")
 
     print("\nIn which direction would you like to go?:")
-    playermove = input("[n]orth [s]outh [e]ast [w]est: ")
+    playermove = input("   [n]orth [s]outh [e]ast [w]est: ")
 
-    if playermove == 'n':
+    if playermove == 'n' and player.p_room.n_to:
         player.p_room = player.p_room.n_to
-    elif playermove == 'e':
+    elif playermove == 'e' and player.p_room.e_to:
         player.p_room = player.p_room.e_to
-    elif playermove == 's':
+    elif playermove == 's' and player.p_room.s_to:
         player.p_room = player.p_room.s_to
-    elif playermove == 'w':
+    elif playermove == 'w' and player.p_room.w_to:
         player.p_room = player.p_room.w_to
-    elif player.p_room == None:
-        print('No')
+    else:
+        print('\n>>> There is no room in that direction. Choose again. <<<\n')
 
 
 
