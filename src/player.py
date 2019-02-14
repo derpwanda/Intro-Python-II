@@ -2,11 +2,12 @@
 # currently.
 
 class Player:
-    def __init__(self, p_name, p_room):
+    def __init__(self, p_name, p_room, p_inventory):
         self.p_name = p_name
         self.p_room = p_room
+        self.inventory = p_inventory
 
-    # def __str__(self):
-    #     return (f"from Player Class: {self.p_name} is in the {self.p_room.r_name}")
+    def add_item(self, item):
+        pass
 
     
