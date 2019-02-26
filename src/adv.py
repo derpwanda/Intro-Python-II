@@ -7,7 +7,7 @@ from player import Player
 room = {
     'outside':  Room("Outside Cave Entrance",
                      "North of you, the cave mount beckons", 
-                     [Item("lamp", "Victorian")]),
+                     [Item("kerosene lamp", "old and rusty"),Item("pickaxe", "suprisingly new")]),
 
     'foyer':    Room("Foyer", """Dim light filters in from the south. Dusty
 passages run north and east."""),
@@ -41,14 +41,54 @@ room['treasure'].s_to = room['narrow']
 #
 
 # Make a new player object that is currently in the 'outside' room.
-newplayer = Player('outside')
+
+# this line creates a Player object that required a name and room.
+# the room is from the dictionary above, referencing the 'outside' room
+# whose value is a room created the Room class which includes the name,
+# description and empty item list.
+player = Player('Wanda', room['outside'])
+
+
 # Write a loop that:
 #
 # * Prints the current room name
 # * Prints the current description (the textwrap module might be useful here).
 # * Waits for user input and decides what to do.
 #
-# If the user enters a cardinal direction, attempt to move to the room there.
+# If the player enters a cardinal direction, attempt to move to the room there.
 # Print an error message if the movement isn't allowed.
 #
 # If the user enters "q", quit the game.
+
+# playermove = input("   [n]orth [s]outh [e]ast [w]est [Q]uit: ")
+playermove=None
+print(f"Welcome to the game!")
+
+while playermove != "Q": # will run until it hits the return or break statement
+    print(f"{player.p_name} is in: {player.p_room.r_name}")
+    print(f"{player.p_room.r_description}")
+
+    if player.p_room.items:
+        print(f"Here are the items in {player.p_room.r_name}:")
+        for item in player.p_room.items:
+            print(f"   {item.iname}")
+    else:
+        print("There are no items in this room!")
+
+    print("\nIn which direction would you like to go?:")
+    playermove = input("   [n]orth [s]outh [e]ast [w]est [Q]uit: ")
+
+    if playermove == 'n' and player.p_room.n_to:
+        player.p_room = player.p_room.n_to
+    elif playermove == 'e' and player.p_room.e_to:
+        player.p_room = player.p_room.e_to
+    elif playermove == 's' and player.p_room.s_to:
+        player.p_room = player.p_room.s_to
+    elif playermove == 'w' and player.p_room.w_to:
+        player.p_room = player.p_room.w_to
+    elif playermove == 'Q':
+        print(f"\nGoodbye {player.p_name}")
+        break
+    else:
+        print('\n>>> There is no room in that direction. Choose again. <<<\n')
+

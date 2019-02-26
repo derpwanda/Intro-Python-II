@@ -2,7 +2,11 @@
 # currently.
 
 class Player:
-    def __init__(self, p_room):
+    def __init__(self, p_name, p_room, p_inventory=[]):
+        self.p_name = p_name
         self.p_room = p_room
+        self.inventory = p_inventory
 
-print("inside class Player",)
+    def add_item(self, item):
+        pass
+

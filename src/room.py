@@ -10,8 +10,12 @@
 class Room:
     def __init__(self, r_name, r_description, items=[]): # Room was extended with a list
         self.r_name = r_name
-        self.r_name = r_description
+        self.r_description = r_description
         self.items = items
 
-print("inside class Room",)
+        self.n_to=None
+        self.s_to=None
+        self.e_to=None
+        self.w_to=None
+   
 
